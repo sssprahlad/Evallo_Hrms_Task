@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
     "postinstall": "npm rebuild sqlite3",
     "preinstall": "npm install sqlite3 --build-from-source",
     "prestart": "npm install sqlite3 --build-from-source",

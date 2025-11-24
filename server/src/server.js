@@ -15,7 +15,7 @@ const app = express();
 
 const allowedOrigins = [
   // "https://sai-portfolio-tawny.vercel.app",
-  "http://localhost:5000",
+  "http://localhost:3000",
 ];
 
 const corsOptions = {
