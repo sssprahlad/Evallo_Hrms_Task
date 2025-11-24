@@ -3,12 +3,50 @@ import "./RegisterOrg.css";
 import React from "react";
 import { LuBuilding2 } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { REGISTER_API } from "../../../constants/constants";
 
 const RegisterOrg = () => {
   const navigate = useNavigate();
+  const [register, setRegister] = useState({
+    companyName: "",
+    adminName: "",
+    email: "",
+    passsword: "",
+  });
+
+  const handleRegisterChange = (e) => {
+    const { name, value } = e.target;
+    setRegister({ ...register, [name]: value });
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    console.log(register, " register details");
+
+    try {
+      const response = await fetch(REGISTER_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(register),
+        credentials: "include",
+      });
+
+      const data = await response.json();
+      console.log(data, "data");
+      if (data.status === 200) {
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="register-container">
-      <form className="form-container">
+      <form className="form-container" onSubmit={handleRegister}>
         <div className="org-container">
           <div className="bg-icon">
             <LuBuilding2 style={{ color: "#ffffff", fontSize: "1.2rem" }} />
@@ -22,16 +60,33 @@ const RegisterOrg = () => {
             id="companyName"
             type="text"
             placeholder="Enter company name"
+            name="companyName"
+            onChange={handleRegisterChange}
+            required
           />
         </div>
 
         <div className="form-controll">
           <label htmlFor="adminName">Admin name</label>
-          <input id="adminName" type="text" placeholder="Enter admin name" />
+          <input
+            id="adminName"
+            type="text"
+            placeholder="Enter admin name"
+            name="adminName"
+            onChange={handleRegisterChange}
+            required
+          />
         </div>
         <div className="form-controll">
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" placeholder="Enter company email" />
+          <input
+            id="email"
+            type="email"
+            placeholder="Enter company email"
+            name="email"
+            onChange={handleRegisterChange}
+            required
+          />
         </div>
         <div className="form-controll">
           <label htmlFor="password">Password</label>
@@ -39,6 +94,9 @@ const RegisterOrg = () => {
             id="password"
             type="password"
             placeholder="Enter company password"
+            name="password"
+            onChange={handleRegisterChange}
+            required
           />
         </div>
         <button type="submit">Sign Up</button>
