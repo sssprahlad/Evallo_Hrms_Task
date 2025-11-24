@@ -68,6 +68,7 @@ const Teams = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify(addTeam),
+          credentials: "include",
         }
       );
       const data = await response.json();
@@ -105,6 +106,7 @@ const Teams = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         // body: JSON.stringify(addEmployee),
+        credentials: "include",
       });
       const data = await response.json();
       console.log(data);
@@ -126,6 +128,7 @@ const Teams = () => {
           team_id: selectedTeamId,
           employee_id: employeeId,
         }),
+        credentials: "include",
       });
       const data = await response.json();
       console.log(data);
@@ -267,6 +270,7 @@ const Teams = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        credentials: "include",
       });
       const data = await response.json();
       console.log(data);

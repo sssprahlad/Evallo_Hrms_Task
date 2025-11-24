@@ -14,7 +14,8 @@ const app = express();
 // app.use(cors());
 
 const allowedOrigins = [
-  "https://evallo-hrms-task.vercel.app" || "http://localhost:3000",
+  "https://evallo-hrms-task.vercel.app",
+  "http://localhost:3000",
 ];
 
 const corsOptions = {
