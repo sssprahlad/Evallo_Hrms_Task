@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const Admin = require("../models/companyModels");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 exports.register = (req, res) => {
   const { companyName, adminName, email, password } = req.body;

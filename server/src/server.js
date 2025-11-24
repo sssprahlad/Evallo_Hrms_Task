@@ -5,8 +5,8 @@ const authRouter = require("./routes/authRouter");
 const employeeRouter = require("./routes/employeesRouter");
 const teamsRouter = require("./routes/teamsRouter");
 const employeeTeamsRouter = require("./routes/employeeTeamsRouter");
-
 require("dotenv").config();
+
 const port = process.env.PORT;
 
 const app = express();

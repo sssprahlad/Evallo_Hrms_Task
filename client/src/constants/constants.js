@@ -1,5 +1,5 @@
 const API_BASE_URL =
- "http://localhost:5000";
+  "https://evallo-hrms-task.onrender.com" || "http://localhost:5000";
 
 export const LOGIN_API = `${API_BASE_URL}/api/auth/login`;
 export const REGISTER_API = `${API_BASE_URL}/api/auth/register`;
