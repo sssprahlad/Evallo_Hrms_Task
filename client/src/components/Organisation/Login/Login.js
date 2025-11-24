@@ -28,6 +28,7 @@ const Login = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userDetails),
+        credentials: "include",
       });
 
       const data = await response.json();

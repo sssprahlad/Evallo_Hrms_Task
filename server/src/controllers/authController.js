@@ -24,7 +24,7 @@ exports.register = (req, res) => {
         if (err)
           return res.status(500).json({ message: "Failed to register user" });
 
-        res.json({ message: "Register Successful" });
+        res.json({ status: 200, message: "Register Successful" });
       });
     } catch (error) {
       return res.status(500).json({ message: "Failed to register user" });

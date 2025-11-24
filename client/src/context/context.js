@@ -26,6 +26,7 @@ export const UserProvider = ({ children }) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
+      credentials: "include",
     });
     const data = await response.json();
     console.log(data, "employee data");
@@ -40,6 +41,7 @@ export const UserProvider = ({ children }) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
+      credentials: "include",
     });
     const data = await response.json();
     console.log(data, "employee data");
@@ -54,6 +56,7 @@ export const UserProvider = ({ children }) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
+      credentials: "include",
     });
     const data = await response.json();
     dispatch(setTeamEmployees(data?.employees));

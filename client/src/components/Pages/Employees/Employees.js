@@ -65,6 +65,7 @@ const Employees = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify(addEmployee),
+           credentials: "include",
         }
       );
       const data = await response.json();
@@ -195,6 +196,7 @@ const Employees = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         // body: JSON.stringify(addEmployee),
+         credentials: "include",
       });
       const data = await response.json();
       console.log(data);

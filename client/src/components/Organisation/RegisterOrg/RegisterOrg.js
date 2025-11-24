@@ -37,7 +37,9 @@ const RegisterOrg = () => {
       const data = await response.json();
       console.log(data, "data");
       if (data.status === 200) {
-        navigate("/login");
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
       }
     } catch (error) {
       console.log(error);
