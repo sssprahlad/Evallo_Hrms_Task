@@ -1,0 +1,21 @@
+.assign-btn {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: rgb(37 99 235);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.close-btn {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.assgin-description {
+  font-size: 0.75rem;
+  margin: 0.3rem 0rem;
+  
+}

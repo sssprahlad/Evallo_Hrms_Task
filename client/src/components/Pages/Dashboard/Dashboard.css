@@ -1,0 +1,67 @@
+.main-common-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 8px;
+  color: white;
+  height: 100px;
+}
+.employees-container {
+  background: linear-gradient(to bottom right, #3b82f6, #2563eb);
+}
+.active-container {
+  background: linear-gradient(to bottom right, #a855f7, #9333ea);
+}
+.system-container {
+  background: linear-gradient(to bottom right, #22c55e, #16a34a);
+}
+
+.horizontal-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.icon-size {
+  font-size: 2rem;
+}
+
+.recent-activity-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+
+.recent-active-item-container {
+  display: flex;
+  gap: 1rem;
+  background: rgb(231, 237, 244);
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+.item-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.user-login {
+  font-size: 0.875rem;
+  color: rgb(26, 34, 51);
+  font-weight: 500;
+}
+.user-login-date {
+  font-size: 0.75rem;
+  color: rgb(107 114 128);
+}
