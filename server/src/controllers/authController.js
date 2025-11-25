@@ -58,6 +58,13 @@ exports.login = (req, res) => {
         expiresIn: "1h",
       });
 
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+        maxAge: 60 * 60 * 1000,
+      });
+
       console.log(existingUser, "exist");
 
       res.status(200).json({

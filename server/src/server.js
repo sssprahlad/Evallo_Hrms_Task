@@ -5,6 +5,7 @@ const authRouter = require("./routes/authRouter");
 const employeeRouter = require("./routes/employeesRouter");
 const teamsRouter = require("./routes/teamsRouter");
 const employeeTeamsRouter = require("./routes/employeeTeamsRouter");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const port = process.env.PORT;
@@ -13,27 +14,35 @@ const app = express();
 
 // app.use(cors());
 
-const allowedOrigins = [
-  "https://evallo-hrms-task.vercel.app",
-  "http://localhost:3000",
-];
+// const allowedOrigins = [
+//   "https://evallo-hrms-task.vercel.app",
+//   "http://localhost:3000",
+// ];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS: " + origin));
-    }
-  },
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  optionsSuccessStatus: 204,
-};
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS: " + origin));
+//     }
+//   },
+//   credentials: true,
+//   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+//   optionsSuccessStatus: 204,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
+app.use(
+  cors({
+    origin: ["https://evallo-hrms-task.vercel.app", "http://localhost:3000"],
+    credentials: true,
+  })
+);
+
+app.use(cookieParser());
 app.use(express.json());
 
 app.get("/", (req, res) => {
