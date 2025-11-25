@@ -79,6 +79,7 @@ const Teams = () => {
         orgId: localStorage.getItem("orgId"),
       });
       setAddTeamForm(false);
+      setUpdate(false);
       fetchTeams();
     } catch (error) {
       console.log(error);

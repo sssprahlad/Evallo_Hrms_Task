@@ -52,7 +52,7 @@ exports.login = (req, res) => {
       );
 
       if (!validPassword)
-        return res.status(401).json({ message: "Invalid email or password" });
+        return res.status(401).json({ message: "Invalid password" });
 
       const token = jwt.sign({ id: existingUser.id }, process.env.JWT_SECRET, {
         expiresIn: "1h",

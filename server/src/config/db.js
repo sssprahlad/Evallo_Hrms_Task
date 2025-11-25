@@ -1,13 +1,17 @@
 const sqlite3 = require("sqlite3").verbose();
+const path = require("path");
 
-const db = new sqlite3.Database("../hrms.db", (err) => {
-  if (err) {
-    console.error("Database connection failed", err.message);
-  } else {
-    console.log("Sql Database is connected successfully");
-    db.run("PRAGMA foreign_keys = ON");
+const db = new sqlite3.Database(
+  path.resolve(__dirname, "../hrms.db"),
+  (err) => {
+    if (err) {
+      console.error("Database connection failed", err.message);
+    } else {
+      console.log("Sql Database connected");
+      db.run("PRAGMA foreign_keys = ON");
+    }
   }
-});
+);
 
 db.run(`
     CREATE TABLE IF NOT EXISTS  organisations(

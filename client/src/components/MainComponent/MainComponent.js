@@ -37,6 +37,8 @@ const MainComponent = () => {
 
   useEffect(() => {
     fetchEmployees();
+    fetchTeams();
+    fetchTeamEmployees();
   }, []);
 
   const navList = [

@@ -41,8 +41,10 @@ const Employees = () => {
 
   useEffect(() => {
     if (searchQuary?.length > 0) {
+      const searchValue = searchQuary.toLowerCase();
+
       const data = employeesDetails?.filter((each) =>
-        each?.employeeName?.includes(searchQuary)
+        each?.employeeName?.toLowerCase().includes(searchValue)
       );
       setSearchData(data);
     } else {
@@ -65,7 +67,7 @@ const Employees = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify(addEmployee),
-           credentials: "include",
+          credentials: "include",
         }
       );
       const data = await response.json();
@@ -80,6 +82,7 @@ const Employees = () => {
         orgId: localStorage.getItem("orgId"),
       });
       setAddEmployeeForm(false);
+      setEditEmployee(false);
       fetchEmployees();
     } catch (error) {
       console.log(error);
@@ -196,7 +199,7 @@ const Employees = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         // body: JSON.stringify(addEmployee),
-         credentials: "include",
+        credentials: "include",
       });
       const data = await response.json();
       console.log(data);
