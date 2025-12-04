@@ -86,7 +86,7 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </div>
-        <p style={{ color: data?.status === 200 ? "green" : "red" }}>
+        <p style={{ color: responseData?.status === 200 ? "green" : "red" }}>
           {responseData?.message}
         </p>
 
