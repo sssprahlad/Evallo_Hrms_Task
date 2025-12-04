@@ -42,12 +42,13 @@ const RegisterOrg = () => {
       if (data.status === 200) {
         setResponseData(data);
         setLoading(false);
-        setResponseData(data);
+
         setTimeout(() => {
           navigate("/login");
         }, 1000);
       } else {
         setLoading(false);
+        setResponseData(data);
       }
     } catch (error) {
       console.log(error);

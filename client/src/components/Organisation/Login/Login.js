@@ -47,6 +47,7 @@ const Login = () => {
           navigate("/");
         }, 1000);
       } else {
+        setResponseData(data);
         setLoading(false);
       }
     } catch (error) {
