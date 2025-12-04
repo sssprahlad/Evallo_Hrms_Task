@@ -11,6 +11,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +20,7 @@ const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     console.log(userDetails, "details");
 
     try {
@@ -39,11 +41,13 @@ const Login = () => {
           localStorage.setItem("orgName", data.organisation_name);
           localStorage.setItem("adminName", data.admin_name);
           localStorage.setItem("orgId", data.org_id);
+          setLoading(false);
           navigate("/");
         }, 1000);
       }
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -78,7 +82,20 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </div>
-        <button type="submit">Sign In</button>
+
+        <button type="submit">
+          {" "}
+          {loading ? (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div
+                class="spinner"
+                style={{ height: "25px", width: "25px" }}
+              ></div>
+            </div>
+          ) : (
+            "Sign In"
+          )}{" "}
+        </button>
         <span className="span-text">
           Don't have an account?{" "}
           <a className="sign-in" onClick={() => navigate("/register")}>

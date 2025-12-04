@@ -14,6 +14,7 @@ const RegisterOrg = () => {
     email: "",
     passsword: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleRegisterChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +23,7 @@ const RegisterOrg = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
     console.log(register, " register details");
 
     try {
@@ -37,12 +39,14 @@ const RegisterOrg = () => {
       const data = await response.json();
       console.log(data, "data");
       if (data.status === 200) {
+        setLoading(false);
         setTimeout(() => {
           navigate("/login");
         }, 1000);
       }
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -101,7 +105,20 @@ const RegisterOrg = () => {
             required
           />
         </div>
-        <button type="submit">Sign Up</button>
+        {/* <button type="submit">Sign Up</button> */}
+        <button type="submit">
+          {" "}
+          {loading ? (
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div
+                class="spinner"
+                style={{ height: "25px", width: "25px" }}
+              ></div>
+            </div>
+          ) : (
+            "Sign Up"
+          )}{" "}
+        </button>
         <span className="span-text">
           Already have an account?{" "}
           <a className="sign-in" onClick={() => navigate("/login")}>
