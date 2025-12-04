@@ -7,14 +7,19 @@ exports.register = (req, res) => {
   const { companyName, adminName, email, password } = req.body;
 
   if (!companyName || !adminName || !email || !password) {
-    return res.status(400).json({ message: "All Fields are Requiresd" });
+    return res
+      .status(400)
+      .json({ status: 400, message: "All Fields are Requiresd" });
   }
 
   Admin.findByEmail(email, async (err, existingUser) => {
-    if (err) return res.status(500).json({ message: "Database Error" });
+    if (err)
+      return res.status(500).json({ status: 500, message: "Database Error" });
 
     if (existingUser) {
-      return res.status(400).json({ message: "User Already Exists" });
+      return res
+        .status(400)
+        .json({ status: 400, message: "User Already Exists" });
     }
 
     try {
@@ -22,12 +27,16 @@ exports.register = (req, res) => {
 
       Admin.createUser(companyName, adminName, email, hashedPassword, (err) => {
         if (err)
-          return res.status(500).json({ message: "Failed to register user" });
+          return res
+            .status(500)
+            .json({ status: 500, message: "Failed to register user" });
 
         res.json({ status: 200, message: "Register Successful" });
       });
     } catch (error) {
-      return res.status(500).json({ message: "Failed to register user" });
+      return res
+        .status(500)
+        .json({ status: 500, message: "Failed to register user" });
     }
   });
 };
@@ -36,15 +45,20 @@ exports.login = (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({ message: "All fields are required." });
+    return res
+      .status(400)
+      .json({ status: 400, message: "All fields are required." });
   }
 
   try {
     Admin.findByUserLogin(email, async (err, existingUser) => {
-      if (err) return res.status(500).json({ message: "Database error" });
+      if (err)
+        return res.status(500).json({ status: 500, message: "Database error" });
 
       if (!existingUser)
-        return res.status(401).json({ message: "Invalid email or password" });
+        return res
+          .status(401)
+          .json({ status: 401, message: "Invalid email or password" });
 
       const validPassword = await bcrypt.compare(
         password,
@@ -52,7 +66,9 @@ exports.login = (req, res) => {
       );
 
       if (!validPassword)
-        return res.status(401).json({ message: "Invalid password" });
+        return res
+          .status(401)
+          .json({ status: 401, message: "Invalid password" });
 
       const token = jwt.sign({ id: existingUser.id }, process.env.JWT_SECRET, {
         expiresIn: "1h",

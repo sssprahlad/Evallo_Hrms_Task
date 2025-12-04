@@ -14,6 +14,7 @@ const RegisterOrg = () => {
     email: "",
     passsword: "",
   });
+  const [responseData, setResponseData] = useState();
   const [loading, setLoading] = useState(false);
 
   const handleRegisterChange = (e) => {
@@ -39,10 +40,14 @@ const RegisterOrg = () => {
       const data = await response.json();
       console.log(data, "data");
       if (data.status === 200) {
+        setResponseData(data);
         setLoading(false);
+        setResponseData(data);
         setTimeout(() => {
           navigate("/login");
         }, 1000);
+      } else {
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -106,6 +111,9 @@ const RegisterOrg = () => {
           />
         </div>
         {/* <button type="submit">Sign Up</button> */}
+        <p style={{ color: responseData?.status === 200 ? "green" : "red" }}>
+          {data?.message}
+        </p>
         <button type="submit">
           {" "}
           {loading ? (

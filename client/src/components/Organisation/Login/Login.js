@@ -12,6 +12,7 @@ const Login = () => {
     password: "",
   });
   const [loading, setLoading] = useState(false);
+  const [responseData, setResponseData] = useState();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -42,8 +43,11 @@ const Login = () => {
           localStorage.setItem("adminName", data.admin_name);
           localStorage.setItem("orgId", data.org_id);
           setLoading(false);
+          setResponseData(data);
           navigate("/");
         }, 1000);
+      } else {
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -82,6 +86,9 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </div>
+        <p style={{ color: data?.status === 200 ? "green" : "red" }}>
+          {responseData?.message}
+        </p>
 
         <button type="submit">
           {" "}
