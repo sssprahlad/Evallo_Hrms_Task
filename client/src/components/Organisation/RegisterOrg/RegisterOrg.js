@@ -112,7 +112,13 @@ const RegisterOrg = () => {
           />
         </div>
         {/* <button type="submit">Sign Up</button> */}
-        <p style={{ color: responseData?.status === 200 ? "green" : "red" }}>
+        <p
+          style={{
+            color: responseData?.status === 200 ? "green" : "red",
+            textAlign: "center",
+            fontSize: "0.75rem",
+          }}
+        >
           {responseData?.message}
         </p>
         <button type="submit">
